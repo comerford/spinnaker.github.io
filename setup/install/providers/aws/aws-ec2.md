@@ -34,7 +34,7 @@ Use this option to deploy Spinnaker, if you are familar with deployment using [A
 
 ### Managing Account
 1. Navigate to [Console](https://console.aws.amazon.com/){:target="\_blank"} > CloudFormation and [select](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html#select-region) your preferred region.
-2. Download [the template](https://www.spinnaker.io/downloads/aws/managing.yaml) locally to your workstation.
+2. Download [the template](https://spinnaker.io/downloads/aws/managing.yaml) locally to your workstation.
 
     2.a (Optional). Add additional managed account as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded template file.
 3. Creating the CloudFormation Stack
@@ -71,7 +71,7 @@ If you want to use AccessKeys and Secrets to run Spinnaker
 
 ```bash
 
-curl -O https://www.spinnaker.io/downloads/aws/managing.yaml
+curl -O -L https://spinnaker.io/downloads/aws/managing.yaml
 echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=true --capabilities CAPABILITY_NAMED_IAM --region us-west-2
@@ -81,7 +81,7 @@ If you want to use InstanceProfile run Spinnaker
 
 ```bash
 
-curl -O https://www.spinnaker.io/downloads/aws/managing.yaml
+curl -O -L https://spinnaker.io/downloads/aws/managing.yaml
 echo "Optionally add Managing account to the file downloaded as shown on line 158 in the SpinnakerAssumeRolePolicy section of the downloaded file."
 aws cloudformation deploy --stack-name spinnaker-managing-infrastructure-setup --template-file managing.yaml \
 --parameter-overrides UseAccessKeyForAuthentication=false --capabilities CAPABILITY_NAMED_IAM --region us-west-2
@@ -108,7 +108,7 @@ aws secretsmanager get-secret-value --secret-id FROM_ABOVE --region us-west-2
 
 ```bash
 
-curl -O https://www.spinnaker.io/downloads/aws/managed.yaml
+curl -O -L https://www.spinnaker.io/downloads/aws/managed.yaml
 aws cloudformation deploy --stack-name spinnaker-managed-infrastructure-setup --template-file managed.yaml \
 --parameter-overrides AuthArn=FROM_ABOVE ManagingAccountId=FROM_ABOVE --capabilities CAPABILITY_NAMED_IAM --region us-west-2
 ```
